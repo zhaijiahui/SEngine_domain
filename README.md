@@ -3,9 +3,9 @@
 
 # Usage：
 
-+------------------------------------------------------------
-+ Collect subdomains through search engines by zhaijiahui
-+ ------------------------------------------------------------
+
+### Collect subdomains through search engines by zhaijiahui
+
 
 -k  Input your keyword
 
