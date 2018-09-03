@@ -1,9 +1,13 @@
 # SEngine_domain
 
 通过搜索引擎收集域名信息
+
 collect domain name from search engine
+
 如果使用-o参数进行保存结果，请在python3.x环境下使用
+
 if you wang to save result,please run in python3.x
+
 
 
 # Change Log
