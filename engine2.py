@@ -6,7 +6,7 @@ import socket
 import csv
 
 remove_list = ['sowang','sogou','baidu','sina','so','jd','tianyancha','qq','zhihu','finance','eastmoney','360'\
-,'ifeng','gaokaopai'] # Exclude interference domain
+,'ifeng','gaokaopai','chinaz'] # Exclude interference domain
 header = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.119 Safari/537.36'}
 
 
@@ -24,9 +24,9 @@ def get_ip_list(domain):  # Parsing the IP list
 
 def baidu_engine(keywords,page):
 	domain_list = []
-	for i in range(page):
+	for i in range(0,page):
+		print('[+]	Baidu search '+str(i+1)+' page...')
 		url = 'https://www.baidu.com/s?wd='+keywords+'&pn='+str(i*10)
-		print('[+]	Baidu search '+str(i)+' page...')
 		r = requests.get(url,headers=header)
 		html = r.content.decode('utf-8')
 		soup = BeautifulSoup(html,'lxml')
@@ -50,11 +50,12 @@ def baidu_engine(keywords,page):
 def bing_engine(keywords,page):
 	domain_list = []
 	for i in range(0,page):
+		print('[+]	Bing search '+str(i+1)+' page...')
 		if i == 0:
 			url = 'https://cn.bing.com/search?q='+keywords+'&FORM=PERE&first=1'
 		else:
 			url = 'https://cn.bing.com/search?q='+keywords+'&FORM=PERE'+str(i)+'&first='+str(i*10)
-		print('[+]	Bing search '+str(i)+' page...')
+		
 		header['Cookie'] = '_EDGE_V=1; MUID=16D4CEBA7E0E6B7B2F32C5257FB96A1D; MUIDB=16D4CEBA7E0E6B7B2F32C5257FB96A1D; SRCHD=AF=NOFORM; SRCHUID=V=2&GUID=9DE844CCC2984C9D960C37BDEF3FB4D3&dmnchg=1; BFBN=gRCpIwEkh3vZLcugIKnHADUzLERsJGiQ_BrNBV31m2HAeg; ULC=P=13AEA|1:@1&H=13AEA|12:10&T=13AEA|12:10; ENSEARCH=TIPBUBBLE=1&BENVER=0; ipv6=hit=1533606783456&t=4; _EDGE_S=mkt=zh-cn&SID=365BCAC7E54064700BE2C683E46E65E1; SRCHUSR=DOB=20180223&T=1533603962000; _FP=hta=on; _SS=SID=365BCAC7E54064700BE2C683E46E65E1&bIm=562316&HV=1533604112; SRCHHPGUSR=CW=1519&CH=150&DPR=1.25&UTC=480&WTS=63669199983'
 
 		r = requests.get(url,headers=header)
@@ -102,7 +103,7 @@ def Yahoo_engine(keywords,page):
 
 def so360_engine(keywords,page):
 	domain_list = []
-	for i in range(1,page):
+	for i in range(1,page+1):
 		url = 'https://www.so.com/s?q='+keywords+'&pn=' + str(i)
 		print('[+]	so360 search '+str(i)+' page...')
 		r = requests.get(url,headers=header)
@@ -126,7 +127,7 @@ def so360_engine(keywords,page):
 
 def sogou_engine(keywords,page):
 	domain_list = []
-	for i in range(1,page):
+	for i in range(1,page+1):
 		url = 'https://www.sogou.com/web?query='+keywords+'&page=' + str(i)+'&ie=utf8'
 		print('[+]	Sogou search '+str(i)+' page...')
 		r = requests.get(url,headers=header)
