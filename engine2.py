@@ -206,6 +206,8 @@ def main():
 	if writefile:
 		if ":" in keywords:
 			wname = keywords.split(":")[1]
+		else:
+			wname = keywords
 		writename = wname+"_"+str(page)+"_"+str(int(time.time()))+".csv"
 		with open(writename,"w+", newline='') as csvfile:
 			writer = csv.writer(csvfile)
