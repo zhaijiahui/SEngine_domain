@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 import requests,re
 from bs4 import BeautifulSoup
-import getopt,sys,os
+import getopt,sys,os,time
 import socket
 import csv
 
@@ -204,7 +204,10 @@ def main():
 	result_list = list(set(result_list))
 	print('+-------------------result---------------------+')
 	if writefile:
-		with open(keywords+"_"+str(page)+".csv","w+", newline='') as csvfile:
+		if ":" in keywords:
+			wname = keywords.split(":")[1]
+		writename = wname+"_"+str(page)+"_"+str(int(time.time()))+".csv"
+		with open(writename,"w+", newline='') as csvfile:
 			writer = csv.writer(csvfile)
 			writer.writerow(["Domain","Ip"])
 			for x in result_list:
@@ -212,7 +215,7 @@ def main():
 				writer.writerow([x,' '.join(get_ip_list(x))])
 				# print(x) # just output domain
 		print('+-------------------save---------------------+')
-		print('save to: '+ os.getcwd() + os.sep + keywords +"_"+str(page)+".csv")
+		print('save to: '+ os.getcwd() + os.sep + writename)
 		csvfile.close()
 	else:
 		for x in result_list:
