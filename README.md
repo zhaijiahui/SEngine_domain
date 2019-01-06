@@ -13,6 +13,7 @@ if you want to save result,please run in python3.x
 # Change Log
 
 [+][2018-09-03] 初始功能，添加说明信息
+[+][2018-10-17] 添加对github泄露的查找说明
 
 # Dependencies
 
@@ -44,10 +45,12 @@ pip install requests lxml beautifulsoup4
 
 
 
-1.engine2.py -k 腾讯 -p 1
+- 1.engine2.py -k 腾讯 -p 1
 
-2.engine2.py -k site:qq.com -p 2
+- 2.engine2.py -k inurl:qq.com -p 2
 
-3.engine2.py -k intext:微信 -p 3 -o
+- 3.engine2.py -k intext:微信 -p 3 -o
 
-4.and many more...
+- 4.engine2.py -k site:Github.com -p 2
+
+- 5.and many more...
