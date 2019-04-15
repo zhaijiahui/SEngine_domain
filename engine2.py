@@ -5,10 +5,10 @@ import getopt,sys,os,time
 import socket
 import csv
 import io  
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='gb18030')         #改变标准输出的默认编码  
+# sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='gb18030')         #改变标准输出的默认编码  
 
 remove_list = ['sowang','sogou','baidu','sina','so','jd','tianyancha','qq','zhihu','finance','eastmoney','360'\
-,'ifeng','gaokaopai','chinaz'] # Exclude interference domain
+,'ifeng','gaokaopai','chinaz','163'] # Exclude interference domain
 header = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.119 Safari/537.36'}
 
 
@@ -39,16 +39,19 @@ def baidu_engine(keywords,page):
 
 		for span in f13:
 			showurl = span.find("a",class_="c-showurl")
-			showurl=str(showurl)
-			surl = re.findall('target="_blank">(.*)</a>',showurl)[0]
-			relpa = ['<b>','</b>','/\xa0']
-			for i in relpa:
-				surl = surl.replace(i,'')
-			# surl = surl[0].replace('<b>','').replace('</b>/\xa0','')
-			# print(surl)
-			if surl.split('.')[1] not in remove_list:
-				domain_list.append(surl.strip())
-				# domain_list.append('/'.join(domain[:3]))
+			try:
+				surl = showurl.string
+				relpa = ['<b>','</b>','/\xa0']
+				for i in relpa:
+					surl = surl.replace(i,'')
+				# surl = surl[0].replace('<b>','').replace('</b>/\xa0','')
+				# print(surl)
+				if surl.split('.')[1] not in remove_list:
+					domain_list.append(surl.strip())
+					# domain_list.append('/'.join(domain[:3]))
+			except Exception as e:
+				pass
+			
 	# domain_list = list(set(domain_list))
 	return domain_list
 

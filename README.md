@@ -6,18 +6,25 @@ collect domain name from search engine
 
 如果使用-o参数进行保存结果，请在python3.x环境下使用
 
-if you want to save result,please run in python3.x
+if you want to save result use -o option , and please run in python3.x
 
 
 
 # Change Log
 
-[+][2018-09-03] 初始功能，添加说明信息
-[+][2018-10-17] 添加对github泄露的查找说明
+[+][2018-09-03] 	初始功能，添加说明信息
+[+][2018-10-17] 	添加README说明
+[+][2019-1-6] 	BUG#1  修改浏览器高级搜索
+
+[+][2019-4-15] 	BUG#2  baidu 模块优化，调整编码问题
+
+
 
 # Dependencies
 
 pip install requests lxml beautifulsoup4
+
+
 
 
 # Usage
@@ -35,15 +42,15 @@ pip install requests lxml beautifulsoup4
 -s  Prevent requests too fast
 
    Support Search Engines: baidu,bing,so360,sogou(default)
-    
+​    
    Yahoo(slow!)
    				
    Usage: engine2.py -k yourkeywords -p 10 -o
-	
-	
-# yourkeywords example:
+​	
+​	
+# keywords example:
 
-
+maybe USELIST.txt can help you.....
 
 - 1.engine2.py -k 腾讯 -p 1
 
