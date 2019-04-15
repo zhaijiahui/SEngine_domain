@@ -13,7 +13,9 @@ if you want to save result use -o option , and please run in python3.x
 # Change Log
 
 [+][2018-09-03] 	初始功能，添加说明信息
+
 [+][2018-10-17] 	添加README说明
+
 [+][2019-1-6] 	BUG#1  修改浏览器高级搜索
 
 [+][2019-4-15] 	BUG#2  baidu 模块优化，调整编码问题
